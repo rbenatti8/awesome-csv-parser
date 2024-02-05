@@ -1,0 +1,449 @@
+[
+  {
+    "id": "1",
+    "name": "schema for vendor A",
+    "target_fields": [
+      {
+        "name": "employee_name",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Name"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": []
+              }
+            },
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "employee_salary",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Wage"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["."]
+              }
+            },
+            {
+              "type": "remove_letters",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "decimal",
+            "options": {
+              "places": 2
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_email",
+        "is_required": true,
+        "is_unique": true,
+        "source": {
+          "fields": ["Email"],
+          "sanitizations": [
+            {
+              "type": "lowercase",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "email",
+            "options": {}
+          }
+        }
+      },
+      {
+        "name": "employee_id",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Number"],
+          "sanitizations": []
+        }
+      },
+      {
+        "name": "employee_phone",
+        "is_required": false,
+        "is_unique": false,
+        "source": {
+          "fields": [""]
+        }
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "schema for vendor B",
+    "target_fields": [
+      {
+        "name": "employee_name",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["First", "Last"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": []
+              }
+            },
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ],
+          "aggregation": {
+            "type": "concat",
+            "options": {
+              "delimiter": " "
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_salary",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Salary"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["."]
+              }
+            },
+            {
+              "type": "remove_letters",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "decimal",
+            "options": {
+              "places": 2
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_email",
+        "is_required": true,
+        "is_unique": true,
+        "source": {
+          "fields": ["E-mail"],
+          "sanitizations": [
+            {
+              "type": "lowercase",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "email",
+            "options": {}
+          }
+        }
+      },
+      {
+        "name": "employee_id",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["ID"],
+          "sanitizations": []
+        }
+      },
+      {
+        "name": "employee_phone",
+        "is_required": false,
+        "is_unique": false,
+        "source": {
+          "fields": [""]
+        }
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "schema for vendor C",
+    "target_fields": [
+      {
+        "name": "employee_name",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["first name", "last name"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": []
+              }
+            },
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ],
+          "aggregation": {
+            "type": "concat",
+            "options": {
+              "delimiter": " "
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_salary",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Rate"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["."]
+              }
+            },
+            {
+              "type": "remove_letters",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "decimal",
+            "options": {
+              "places": 2
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_email",
+        "is_required": true,
+        "is_unique": true,
+        "source": {
+          "fields": ["e-mail"],
+          "sanitizations": [
+            {
+              "type": "lowercase",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "email",
+            "options": {}
+          }
+        }
+      },
+      {
+        "name": "employee_id",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Employee Number"],
+          "sanitizations": []
+        }
+      },
+      {
+        "name": "employee_phone",
+        "is_required": false,
+        "is_unique": false,
+        "source": {
+          "fields": ["Mobile"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["+", "(", ")", "-"]
+              }
+            },
+            {
+              "type": "trim_spaces",
+              "options": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "schema for vendor D",
+    "target_fields": [
+      {
+        "name": "employee_name",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["f. name", "l. name"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": []
+              }
+            },
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ],
+          "aggregation": {
+            "type": "concat",
+            "options": {
+              "delimiter": " "
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_salary",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["wage"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["."]
+              }
+            },
+            {
+              "type": "remove_letters",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "decimal",
+            "options": {
+              "places": 2
+            }
+          }
+        }
+      },
+      {
+        "name": "employee_email",
+        "is_required": true,
+        "is_unique": true,
+        "source": {
+          "fields": ["email"],
+          "sanitizations": [
+            {
+              "type": "lowercase",
+              "options": {}
+            }
+          ],
+          "format": {
+            "type": "email",
+            "options": {}
+          }
+        }
+      },
+      {
+        "name": "employee_id",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["emp id"],
+          "sanitizations": []
+        }
+      },
+      {
+        "name": "employee_phone",
+        "is_required": false,
+        "is_unique": false,
+        "source": {
+          "fields": ["phone"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {
+                "exclude": ["+", "(", ")", "-"]
+              }
+            },
+            {
+              "type": "trim_spaces",
+              "options": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "schema for vendor D",
+    "target_fields": [
+      {
+        "name": "target.name",
+        "is_required": true,
+        "is_unique": true,
+        "source": {
+          "fields": ["Name"],
+          "sanitizations": [
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "target.country",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Country"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {}
+            },
+            {
+              "type": "capitalize",
+              "options": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "target_num_employees",
+        "is_required": true,
+        "is_unique": false,
+        "source": {
+          "fields": ["Number of employees"],
+          "sanitizations": [
+            {
+              "type": "remove_special_characters",
+              "options": {}
+            },
+            {
+              "type": "remove_letters",
+              "options": {}
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
+
